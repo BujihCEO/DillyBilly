@@ -1,0 +1,173 @@
+<style>
+    .hidden { display: none !important; }
+    [data-loja]>header>span:nth-child(2) form input { box-shadow: inset 0 0 0 2px; }
+    #dropdown-carrinho > a > i { font-size: 30px !important; }
+    #dropdown-carrinho.tema2 > .dropdown-menu { left: unset !important; }
+    .btn-primary.btn-ir-carrinho { font-size: 0.8rem; } 
+    [data-loja]>header>span:nth-child(2) form { max-width: 22rem; }
+    .product-section__filters, .product-description > p { display: none; }
+    .card-img-top, #js_img_color, .glider-slide img { background: #fffff0; }
+    .content-wrapper { display: flex; justify-content: center; }
+    .modelsWrap { display: flex; flex-wrap: wrap; font-size: 1.1rem; margin: 0 0 1rem; background: 
+         #ededed; padding: 5px; border-radius: 10px; justify-content: center; }
+    .modelsWrap > * {margin: 0;}
+    .modelsWrap > a { margin: 0 0.5rem; text-decoration: underline; }
+    .naoSeiCep { text-align: center; }
+    .informacoes { grid-template-columns: repeat(2, 1fr); box-shadow: 0px 0px 5px black; border-radius: 1rem; }
+    .informacoes__imagem:nth-child(1) { object-view-box: inset(6% 50% 4% 0%); margin: auto; }
+    .informacoes__imagem:nth-child(2) { object-view-box: inset(20% 0% 35% 50%); margin: 0 auto 1rem }
+    .informacoes__span { padding: 0 1rem; }
+    
+    @media (max-width: 1000px) {
+        [data-loja]>header>a:nth-child(1), [data-loja]>header>span:nth-child(2) form {
+            position: relative;
+            left: 50%;
+            translate: -50% 0;
+        }
+        [data-loja] > footer > div:nth-child(1) > a { margin: 0 0 1rem !important; }
+    }
+    
+    @media (min-width: 768px) { 
+        .product-detail-img-col { position: sticky; top: 0; height: fit-content; }
+    }
+    
+    [data-loja] > footer > div:nth-child(1) {
+        > a { margin: 0 1rem 0 0; }
+        > div a { text-decoration: underline; }
+    }
+    
+    [data-loja]>footer>div:nth-child(2) div:nth-child(1), 
+    [data-loja]>footer>div:nth-child(2) div:nth-child(2) { align-items: center !important; }
+    
+    [data-loja]>footer>div h4 { font-weight: 600; }
+    
+    .payment-methods { margin: 10px 0 0 !important; }
+    
+    [data-loja] > footer > div:nth-child(3) {
+        justify-content: center;
+        padding: 0.5rem;
+        h4 { display: none; }
+       a i  { font-size: 2.5rem; }
+       .fab.fa-tiktok { font-size: 1.5rem !important; }
+    }
+    
+    .glider-track > :last-child { display: none; }
+    .otherColorsBox { overflow: auto; margin: 0 0 1rem; }
+    .otherColorsBox > p { font-size: 1.4rem; text-align: center; margin-bottom: 0.5rem; }
+    .otherColorsBox > div { display: flex; flex-direction: row; height: 8rem; width: 100%; overflow-x: auto; }
+    .otherColorsBox > div > div { height: 100%; aspect-ratio: 1 / 1; border-radius: 12px; border: 1px solid rgba(0, 0, 0, 0.125); background: #fffff0; margin: 0 0.5rem; }
+    .otherColorsBox > div > div > a { display: block; height: 100%; width: 100%; }
+</style>
+    
+<script>
+
+window.onload = () => {
+    
+    var productDescription = document.querySelector('.product-description');
+    var descriptionText = document.querySelector('.product-description > p')
+    if (descriptionText) {
+        var description =  descriptionText.textContent;
+        var productForm = document.getElementById('product_form');
+        var modelsWrap = document.createElement('div');
+        modelsWrap.className = 'modelsWrap';
+        var modelsLabel = document.createElement('p');
+        modelsLabel.textContent = 'Outros Modelos:';
+        modelsWrap.appendChild(modelsLabel);
+        productForm.insertBefore(modelsWrap, productForm.firstChild);
+        var regex1 = /m="([^"]*)" l="([^"]*)"/g;
+        var regex2 = /cl="([^"]*)" c="([^"]*)"/g;
+        var modelsName = [];
+        var modelsLink = [];
+        var colorsLink = [];
+        var colors = [];
+        var match;
+        while ((match = regex1.exec(description)) !== null) {
+            modelsName.push(match[1]);
+            modelsLink.push(match[2]);
+        }
+        while ((match = regex2.exec(description)) !== null) {
+            colorsLink.push(match[1]);
+            colors.push(match[2]);
+        }
+        const lastUrl = window.location.pathname.split("/").filter(Boolean).pop();
+        modelsLink.forEach((e, i) => {
+            if (lastUrl.includes(e) || e === '') {
+                return; 
+            } else {
+                link = document.createElement('a');
+                icon = document.createElement('div');
+                icon.style.background = `url(${modelsName[i]}) center / contain no-repeat`;
+                link.textContent = modelsName[i];
+                var partes = lastUrl.split("-");
+                partes[partes.length - 1] = e;
+                var newLink = partes.join("-");
+                link.href = `https://dillybilly.shop/${newLink}`;
+                modelsWrap.appendChild(icon);
+                modelsWrap.appendChild(link);
+            }
+        });
+        var otherColorsBox = document.createElement('div');
+        otherColorsBox.className = 'otherColorsBox';
+        productForm.insertBefore(otherColorsBox, modelsWrap.nextSibling);
+        var colorLabel = document.createElement('p');
+        colorLabel.textContent = 'Em outras cores:';
+        var colorSlider = document.createElement('div');
+        otherColorsBox.appendChild(colorLabel);
+        otherColorsBox.appendChild(colorSlider);
+        var stampLink = document.querySelector('.glider-track > :last-child').href;
+        colorsLink.forEach((e, i) => {
+            if (lastUrl.includes(e)) {
+                return;
+            } else {
+                var wrap = document.createElement('div');
+                var imgStamp = document.createElement('a');
+                var partes = lastUrl.split("-");
+                partes[partes.length - 1] = e;
+                var newLink = partes.join("-");
+                imgStamp .href = `https://dillybilly.shop/${newLink}`;
+                imgStamp.style.mask = `url(${stampLink}) center / contain no-repeat`;
+                imgStamp.style.background = colors[i];
+                wrap.appendChild(imgStamp);
+                colorSlider.appendChild(wrap);
+            }
+        });
+    }
+    
+        document.querySelector('[data-loja]>footer>div:nth-child(2) div:nth-child(1) > :nth-child(3)').remove();
+        var dropCartBtn = document.querySelector('#dropdown-carrinho');
+        var dropMenu = document.querySelector('.dropdown-menu');
+        dropMenu.classList.add('hidden');
+    
+        dropCartBtn.addEventListener('click', () => {
+            if (dropMenu.classList.contains('hidden')) { dropMenu.classList.remove('hidden'); } 
+            else { dropMenu.classList.add('hidden'); }
+        });
+        var infoImg =  document.querySelector('.informacoes__imagem');
+        if (infoImg) {
+            var infoImgClone = infoImg.cloneNode(true);
+            infoImg.parentNode.insertBefore(infoImgClone, infoImg.nextSibling);
+        }
+    
+    const targetsScroll = document.querySelectorAll('.card-img-top');
+    
+    window.addEventListener('scroll', function() {
+        const windowHeight = window.innerHeight;
+        const windowCenterY = windowHeight / 2;
+        const maxDistance = windowHeight / 3;
+
+        targetsScroll.forEach(target => {
+            const targetRect = target.getBoundingClientRect();
+            const targetCenterY = targetRect.top + (targetRect.height / 2);
+            const distanceFromCenter = Math.abs(windowCenterY - targetCenterY);
+
+            let proportion = distanceFromCenter / maxDistance;
+            proportion = Math.min(Math.max(proportion, 0), 1);
+
+            const v = 27 - (27 * proportion);
+            target.style.objectViewBox = `inset(${v}%)`;
+        });
+    });
+
+}
+
+</script>							
