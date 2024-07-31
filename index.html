@@ -5,13 +5,41 @@
     #dropdown-carrinho.tema2 > .dropdown-menu { left: unset !important; }
     .btn-primary.btn-ir-carrinho { font-size: 0.8rem; } 
     [data-loja]>header>span:nth-child(2) form { max-width: 22rem; }
-    .product-section__filters, .product-description > p { display: none; }
+    .product-section__filters, .product-description > p, .breadcrumbs  { display: none; }
     .card-img-top, #js_img_color, .glider-slide img { background: #fffff0; }
     .content-wrapper { display: flex; justify-content: center; }
-    .modelsWrap { display: flex; flex-wrap: wrap; font-size: 1.1rem; margin: 0 0 1rem; background: 
-         #ededed; padding: 5px; border-radius: 10px; justify-content: center; }
+    .modelsWrap {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 1.1rem;
+        margin: 0 0 1rem;
+        background: #ededed;
+        padding: 5px;
+        border-radius: 10px;
+        justify-content: center;
+    }
     .modelsWrap > * {margin: 0;}
-    .modelsWrap > a { margin: 0 0.5rem; text-decoration: underline; }
+    .modelsWrap > div {
+        display: flex;
+        width: 100%;
+        overflow: auto;
+    }
+    .modelsWrap > div > a { 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 1rem;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        color: black;
+        white-space: nowrap;
+    }
+    .modelsWrap > div > a > div {
+        display: flex;
+        height: 3rem;
+        min-width: 3rem;
+    }
     .naoSeiCep { text-align: center; }
     .informacoes { grid-template-columns: repeat(2, 1fr); box-shadow: 0px 0px 5px black; border-radius: 1rem; }
     .informacoes__imagem:nth-child(1) { object-view-box: inset(6% 50% 4% 0%); margin: auto; }
@@ -50,11 +78,13 @@
        a i  { font-size: 2.5rem; }
        .fab.fa-tiktok { font-size: 1.5rem !important; }
     }
-    
+    .page-header h1 { text-align: center; }
+    .glider-slide { min-width: 7rem; }
+    .glider-slide img { width: 100%; }
     .glider-track > :last-child { display: none; }
-    .otherColorsBox { overflow: auto; margin: 0 0 1rem; }
-    .otherColorsBox > p { font-size: 1.4rem; text-align: center; margin-bottom: 0.5rem; }
-    .otherColorsBox > div { display: flex; flex-direction: row; height: 8rem; width: 100%; overflow-x: auto; }
+    .otherColorsBox { overflow: auto; margin: 1rem 0; }
+    .otherColorsBox > p { font-size: 1.2rem; text-align: center; margin-bottom: 0.5rem; }
+    .otherColorsBox > div { display: flex; flex-direction: row; height: 7rem; width: 100%; overflow-x: auto; }
     .otherColorsBox > div > div { height: 100%; aspect-ratio: 1 / 1; border-radius: 12px; border: 1px solid rgba(0, 0, 0, 0.125); background: #fffff0; margin: 0 0.5rem; }
     .otherColorsBox > div > div > a { display: block; height: 100%; width: 100%; }
 </style>
@@ -73,6 +103,8 @@ window.onload = () => {
         var modelsLabel = document.createElement('p');
         modelsLabel.textContent = 'Outros Modelos:';
         modelsWrap.appendChild(modelsLabel);
+        var sliderModel = document.createElement('div');
+        modelsWrap.appendChild(sliderModel);
         productForm.insertBefore(modelsWrap, productForm.firstChild);
         var regex1 = /m="([^"]*)" l="([^"]*)"/g;
         var regex2 = /cl="([^"]*)" c="([^"]*)"/g;
@@ -96,19 +128,20 @@ window.onload = () => {
             } else {
                 link = document.createElement('a');
                 icon = document.createElement('div');
-                icon.style.background = `url(${modelsName[i]}) center / contain no-repeat`;
+                icon.style.background = `url(https://raw.githubusercontent.com/BujihCEO/DillyBilly/main/assets/icon-${modelsName[i]}.svg) center / contain no-repeat`;
                 link.textContent = modelsName[i];
                 var partes = lastUrl.split("-");
                 partes[partes.length - 1] = e;
                 var newLink = partes.join("-");
                 link.href = `https://dillybilly.shop/${newLink}`;
-                modelsWrap.appendChild(icon);
-                modelsWrap.appendChild(link);
+                link.insertBefore(icon, link.firstChild);
+                sliderModel.appendChild(link);
             }
         });
+        var productDetail = document.querySelector('.product-detail-img-col');
         var otherColorsBox = document.createElement('div');
         otherColorsBox.className = 'otherColorsBox';
-        productForm.insertBefore(otherColorsBox, modelsWrap.nextSibling);
+        productDetail.appendChild(otherColorsBox);
         var colorLabel = document.createElement('p');
         colorLabel.textContent = 'Em outras cores:';
         var colorSlider = document.createElement('div');
