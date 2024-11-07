@@ -97,7 +97,6 @@ frStyle.textContent = `
 	60% {transform: translateY(-15px);}
 }`;
 
-const frTarget = document.querySelector('.product-section');
 const frButton = document.createElement('button');
 frButton.className = 'frButton';
 frButton.innerHTML = '<p><strong>&#128525 FRETE GRÁTIS &#128525</strong></P><p>clique para ver regras</p>';
@@ -126,10 +125,4 @@ frPopup.onclick = ()=> {
     frPopup.show = false;
 }
 
-if (frTarget) {
-    frTarget.parentNode.insertBefore(frButton, frTarget);
-} else {
-    document.body.append(frButton);
-}
-
-document.body.append(frStyle, frPopup);
+document.body.append(frStyle, frButton, frPopup);
