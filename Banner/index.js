@@ -1,22 +1,19 @@
 const frStyle = document.createElement("style");
-frStyle.textContent = `.frButton {
+frStyle.textContent = `
+.frButton {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    color: #707aff;
     background: #fffff0;
     border: 2px solid #707aff;
-    color: #707aff;
     border-radius: 20px;
+    z-index: 99999;
     animation: bounce 2s ease infinite;
 }
 
 .frButton > p {
     margin: 5px;
-}
-
-@media screen and (max-width: 689px) {
-    .frButton {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-    }
 }
 
 .frPopup {
@@ -31,6 +28,7 @@ frStyle.textContent = `.frButton {
     background: #000000c4;
     padding: 10px;
     box-sizing: border-box;
+    z-index: 99999;
 }
 
 .frPopup > div{
