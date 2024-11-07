@@ -1,19 +1,29 @@
 const frStyle = document.createElement("style");
 frStyle.textContent = `
+.frBox {
+    position: sticky;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    z-index: 99999;
+}
+
 .frButton {
-    position: fixed;
-    right: 10px;
-    bottom: 30px;
+    position: absolute;
+    display: flex;
+    gap: 5px;
+    bottom: 0;
+    padding: 10px;
     color: #707aff;
     background: #fffff0;
     border: 2px solid #707aff;
     border-radius: 20px;
-    z-index: 99999;
     animation: bounce 2s ease infinite;
 }
 
 .frButton > p {
-    margin: 5px;
+    margin: 0px;
 }
 
 .frPopup {
@@ -97,9 +107,12 @@ frStyle.textContent = `
 	60% {transform: translateY(-15px);}
 }`;
 
+const frBox = document.createElement('div');
+frBox.className = 'frBox';
 const frButton = document.createElement('button');
 frButton.className = 'frButton';
 frButton.innerHTML = '<p><strong>&#128525 FRETE GRÁTIS &#128525</strong></P><p>clique para ver regras</p>';
+frBox.append(frButton);
 const frPopup = document.createElement('div');
 frPopup.className = 'frPopup hidden';
 frPopup.show = false;
@@ -125,4 +138,10 @@ frPopup.onclick = ()=> {
     frPopup.show = false;
 }
 
-document.body.append(frStyle, frButton, frPopup);
+var frTarget = document.querySelector('footer');
+if (frTarget) {
+    document.body.append(frStyle, frPopup);
+    frTarget.parentNode.insertBefore(frBox, frTarget);
+} else {
+    document.body.append(frStyle, frButton, frPopup);
+}
