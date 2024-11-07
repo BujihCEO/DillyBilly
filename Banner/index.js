@@ -2,8 +2,8 @@ const frStyle = document.createElement("style");
 frStyle.textContent = `
 .frButton {
     position: fixed;
-    left: 20px;
-    bottom: 20px;
+    right: 10px;
+    bottom: 30px;
     color: #707aff;
     background: #fffff0;
     border: 2px solid #707aff;
