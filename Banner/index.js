@@ -143,5 +143,5 @@ if (frTarget) {
     document.body.append(frStyle, frPopup);
     frTarget.parentNode.insertBefore(frBox, frTarget);
 } else {
-    document.body.append(frStyle, frButton, frPopup);
+    document.body.append(frStyle, frBox, frPopup);
 }
