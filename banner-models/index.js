@@ -1,5 +1,5 @@
+console.log('banner-models');
 ()=> {
-    console.log('banner-models');
     const target = document.querySelector('.product-section');
     if (target) {
         const img = new Image();
