@@ -7,7 +7,7 @@
             box.style = `width: 100%; padding: 10px; box-sizing: border-box; display: flex; justify-content: center;`;
             img.style = 'max-width: 100%;';
             box.append(img);
-            target.insertBefore(box, target.children[0]);
+            target.parentNode.insertBefore(box, target);
         };
         img.src = 'https://montink.s3.amazonaws.com/produto_imagens/258943/phpsJbPpm.png';
     }
