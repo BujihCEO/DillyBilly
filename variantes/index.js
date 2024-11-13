@@ -5,7 +5,7 @@
 // var ss = urlId.slice(0, (urlAtual.split('/').pop()).lastIndexOf('-'));
 // console.log(lastPath);
 const urlPr = window.location.pathname.slice(0, window.location.pathname.lastIndexOf('-'));
-const folderLocation = `https://bujihceo.github.io/dillyBilly/produtos${urlPr}`;
+const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
 
 console.log(`${folderLocation}/exemplo.png`);
 ///////////////////
