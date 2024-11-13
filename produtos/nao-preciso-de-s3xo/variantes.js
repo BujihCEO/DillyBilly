@@ -7,7 +7,6 @@ export const variantes = {
         {id:"kc3zc", c:"#FF4C42"},
         {id:"8sty7", c:"#FF7BC7"},
         {id:"t5l0e", c:"#7352BF"}
-
     ],
     'Baby-Look': [
         {id:"9sbvx", c:"#4294C2"},
