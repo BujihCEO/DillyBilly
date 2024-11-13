@@ -24,7 +24,7 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
             display: flex;
             width: 100%;
             overflow: auto;
-            justify-content: space-around;
+            justify-content: space-evenly;
         }
         .modelsWrap > div > a {
             display: flex;
@@ -53,6 +53,7 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
         }
         .otherColorsBox > div {
             display: flex;
+            justify-content: space-evenly;
             height: 100px;
             width: 100%;
             overflow-x: auto;
@@ -69,7 +70,9 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
         .otherColorsBox > div > a > div {
             width: 100%;
             height: 100%;
-        }`;
+        }
+        .otherColorsBox > div > a > div { margin: 0; }   
+        `;
         document.body.append(style);
         const v = Object.entries(modulo.variantes);
         let actualPr;
