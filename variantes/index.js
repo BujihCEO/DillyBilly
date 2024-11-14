@@ -7,6 +7,7 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
 (()=> {
     import(`${folderLocation}/variantes.js`)
     .then(modulo => {
+        console.log('se fuder');
         const style = document.createElement("style");
         style.textContent = `
         .modelsWrap {
