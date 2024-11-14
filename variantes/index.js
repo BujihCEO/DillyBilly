@@ -7,7 +7,6 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
 (()=> {
     import(`${folderLocation}/variantes.js`)
     .then(modulo => {
-        console.log('se fuder');
         const style = document.createElement("style");
         style.textContent = `
         .modelsWrap {
@@ -109,15 +108,12 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
                         if (v.c !== actualPr.c) {
                             var link = document.createElement('a');
                             link.href = urlAtual.replace(urlId, v.id);
-                            console.log(v);
                             if (v.c.includes('#')) {
-                                console.log('cor');
                                 let icon = document.createElement('div');
                                 icon.style.mask = `url(${folderLocation}/exemplo.png) center / contain`;
                                 icon.style.background = v.c;
                                 link.append(icon);
                             } else {
-                                console.log('img');
                                 let icon = new Image();
                                 icon.src = `${folderLocation}/${v.c}.png`;
                                 link.append(icon);
@@ -163,6 +159,6 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
         }
     })
     .catch(error => {
-        console.error('deu merda');
+        console.error('deu merda', error);
     });
 })();
