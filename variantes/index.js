@@ -42,6 +42,7 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
             height: 3rem;
             min-width: 3rem;
         }
+        .modelsWrap > div > a > p { margin: 0; }
         .otherColorsBox {
             overflow: auto;
             margin: 1rem 0;
@@ -67,11 +68,10 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
             margin: 0 0.5rem;
             box-sizing: border-box;
         }
-        .otherColorsBox > div > a > div {
+        .otherColorsBox > div > a > * {
             width: 100%;
             height: 100%;
-        }
-        .otherColorsBox > div > a > div { margin: 0; }   
+        } 
         `;
         document.body.append(style);
         const v = Object.entries(modulo.variantes);
@@ -107,19 +107,28 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
                         if (v.c === actualPr.c) return;
                         var link = document.createElement('a');
                         link.href = urlAtual.replace(urlId, v.id);
-                        var icon = document.createElement('div');
-                        icon.style.mask = `url(${folderLocation}/exemplo.png) center / contain`;
-                        icon.style.background = v.c;
-                        link.append(icon);
+                        if (v.c.contains('#')) {
+                            let icon = document.createElement('div');
+                            icon.style.mask = `url(${folderLocation}/exemplo.png) center / contain`;
+                            icon.style.background = v.c;
+                            link.append(icon);
+                        } else {
+                            let icon = new Image();
+                            icon.src = `${folderLocation}/${v.c}.png`;
+                            link.append(icon);
+                        }
                         colorSlider.append(link);
                     });
                 } else {
                     var link = document.createElement('a');
+                    var linkUrl = false;
                     vari.forEach(v => {
                         if (v.c === actualPr.c) {
+                            linkUrl = true;
                             link.href = urlAtual.replace(urlId, v.id);
                         }
                     });
+                    if (!linkUrl) link.href = urlAtual.replace(urlId, vari[0].id);
 
                     var icon = document.createElement('div');
                     icon.style.background = `url(https://bujihceo.github.io/DillyBilly/assets/icon-${name}.svg) center / contain no-repeat`;
