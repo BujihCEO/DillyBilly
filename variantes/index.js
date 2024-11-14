@@ -108,6 +108,7 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
                         if (v.c === actualPr.c) return;
                         var link = document.createElement('a');
                         link.href = urlAtual.replace(urlId, v.id);
+                        console.log('1');
                         if (v.c.contains('#')) {
                             let icon = document.createElement('div');
                             icon.style.mask = `url(${folderLocation}/exemplo.png) center / contain`;
