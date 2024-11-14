@@ -100,7 +100,7 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
             modelsBox.className = 'modelsWrap';
             const tittle = document.createElement('p');
             tittle.textContent = 'Outros modelos:'
-            const slider = document.createElement('div');
+            const modelsSlider = document.createElement('div');
 
             v.forEach(([name, vari]) => {
                 if (name == actualPr.name) {
@@ -139,19 +139,19 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
                     variName.textContent = name;
 
                     link.append(icon, variName);
-                    slider.append(link);
+                    modelsSlider.append(link);
                 }
             });
             colorsBox.append(colorsBoxtittle, colorSlider);
-            modelsBox.append(tittle, slider);
+            modelsBox.append(tittle, modelsSlider);
 
             ////            ////        ////
-            if (document.querySelector('.product-detail-img-col')) {
+            if (colorSlider.childElementCount > 0) {
                 let target = document.querySelector('.product-detail-img-col');
                 target.append(colorsBox);
             }
 
-            if (document.querySelector('#product_form')) {
+            if (modelsSlider.childElementCount > 0) {
                 let target = document.querySelector('#product_form');
                 target.insertBefore(modelsBox, target.children[0]);
             }
