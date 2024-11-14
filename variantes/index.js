@@ -68,11 +68,12 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
             background: #fffff0;
             margin: 0 0.5rem;
             box-sizing: border-box;
+            overflow: hidden;
         }
         .otherColorsBox > div > a > * {
             width: 100%;
             height: 100%;
-        } 
+        }
         `;
         document.body.append(style);
         const v = Object.entries(modulo.variantes);
@@ -105,20 +106,24 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
             v.forEach(([name, vari]) => {
                 if (name == actualPr.name) {
                     vari.forEach(v => {
-                        if (v.c === actualPr.c) return;
-                        var link = document.createElement('a');
-                        link.href = urlAtual.replace(urlId, v.id);
-                        if (v.c.contains('#')) {
-                            let icon = document.createElement('div');
-                            icon.style.mask = `url(${folderLocation}/exemplo.png) center / contain`;
-                            icon.style.background = v.c;
-                            link.append(icon);
-                        } else {
-                            let icon = new Image();
-                            icon.src = `${folderLocation}/${v.c}.png`;
-                            link.append(icon);
-                        }
-                        colorSlider.append(link);
+                        if (v.c !== actualPr.c) {
+                            var link = document.createElement('a');
+                            link.href = urlAtual.replace(urlId, v.id);
+                            console.log(v);
+                            if (v.c.includes('#')) {
+                                console.log('cor');
+                                let icon = document.createElement('div');
+                                icon.style.mask = `url(${folderLocation}/exemplo.png) center / contain`;
+                                icon.style.background = v.c;
+                                link.append(icon);
+                            } else {
+                                console.log('img');
+                                let icon = new Image();
+                                icon.src = `${folderLocation}/${v.c}.png`;
+                                link.append(icon);
+                            }
+                            colorSlider.append(link);
+                        };
                     });
                 } else {
                     var link = document.createElement('a');
@@ -158,6 +163,6 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
         }
     })
     .catch(error => {
-
+        console.error('deu merda');
     });
 })();
