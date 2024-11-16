@@ -1,3 +1,4 @@
+// Não diagnosticado
 export const variantes = {
     'Camiseta': [
         {id:"13p77", c:"#4294C2"}, // AZUL
@@ -25,5 +26,14 @@ export const variantes = {
         {id:"yj5ky", c:"#FF4C42"}, // LARANJA
         {id:"jlnks", c:"#FF7BC7"}, // ROSA
         {id:"yfkzm", c:"#7352BF"}, // ROXO 
+    ],
+    'Cropped': [
+        {id:"tpzxn", c:"#4294C2"}, // AZUL
+        {id:"ur9eq", c:"#3167A4"}, // AZUL ESCURO
+        {id:"8izbt", c:"#48A594"}, // VERDE
+        {id:"g2df9", c:"#337050"}, // VERDE ESCURO
+        {id:"1vzdz", c:"#FF4C42"}, // LARANJA
+        {id:"pe31v", c:"#FF7BC7"}, // ROSA
+        {id:"2trqo", c:"#7352BF"}, // ROXO 
     ]
 }
