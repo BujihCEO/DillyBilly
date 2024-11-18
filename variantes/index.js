@@ -44,7 +44,6 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
         }
         .modelsWrap > div > a > p { margin: 0; }
         .otherColorsBox {
-            overflow: auto;
             margin: 1rem 0;
         }
         .otherColorsBox > p {
@@ -62,6 +61,7 @@ const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
         .otherColorsBox > div > a {
             height: 100%;
             aspect-ratio: 1 / 1;
+            flex-shrink: 0;
             border-radius: 12px;
             border: 1px solid rgba(0, 0, 0, 0.125);
             background: #fffff0;
