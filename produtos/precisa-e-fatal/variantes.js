@@ -18,7 +18,7 @@ export const variantes = {
         {id:"e8ws9", c:"#FF7BC7"}, // ROSA
         {id:"d8jlg", c:"#7352BF"}, // ROXO 
     ],
-    // 'Ecobag': [
+    // 'Ecobag': [ 
     //     {id:"", c:"#4294C2"}, // AZUL
     //     {id:"", c:"#3167A4"}, // AZUL ESCURO
     //     {id:"", c:"#48A594"}, // VERDE

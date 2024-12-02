@@ -1,7 +1,7 @@
 const urlAtual = window.location.href;
-const pathName = window.location.pathname;
+const pathName = window.location.pathname.split('/').pop();
 const urlId = pathName.split('-').pop();
-const urlPr = window.location.pathname.slice(0, window.location.pathname.lastIndexOf('-'));
+const urlPr = pathName.slice(0, pathName.lastIndexOf('-'));
 const folderLocation = `https://bujihceo.github.io/DillyBilly/produtos${urlPr}`;
 
 (()=> {
