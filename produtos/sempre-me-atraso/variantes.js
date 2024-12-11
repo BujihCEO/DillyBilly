@@ -18,6 +18,15 @@ export const variantes = {
         {id:"2fj1q", c:"#FF7BC7"}, // ROSA
         {id:"zv56o", c:"#7352BF"}, // ROXO 
     ],
+    'Caneca': [
+        {id:"h8zrt", c:"#4294C2"}, // AZUL
+        {id:"ii2dq", c:"#3167A4"}, // AZUL ESCURO
+        {id:"thqv6", c:"#48A594"}, // VERDE
+        {id:"3rnzs", c:"#337050"}, // VERDE ESCURO
+        {id:"iels3", c:"#FF4C42"}, // LARANJA
+        {id:"o198r", c:"#FF7BC7"}, // ROSA
+        {id:"usgsd", c:"#7352BF"}, // ROXO
+    ],
     // 'Ecobag': [
     //     {id:"", c:"#4294C2"}, // AZUL
     //     {id:"", c:"#3167A4"}, // AZUL ESCURO
@@ -27,13 +36,4 @@ export const variantes = {
     //     {id:"", c:"#FF7BC7"}, // ROSA
     //     {id:"", c:"#7352BF"}, // ROXO 
     // ],
-    // 'Caneca': [
-    //     {id:"", c:"#4294C2"}, // AZUL
-    //     {id:"", c:"#3167A4"}, // AZUL ESCURO
-    //     {id:"", c:"#48A594"}, // VERDE
-    //     {id:"", c:"#337050"}, // VERDE ESCURO
-    //     {id:"", c:"#FF4C42"}, // LARANJA
-    //     {id:"", c:"#FF7BC7"}, // ROSA
-    //     {id:"", c:"#7352BF"}, // ROXO 
-    // ]
 }
