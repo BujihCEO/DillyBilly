@@ -8,6 +8,12 @@
 // // });
 
 const produtos = {
+    'Principal': {
+        url: 'Camiseta-Dobrada.png', 
+        cores: [
+            {nome: 'Branco', cor: '#fff'},
+        ],
+    },
     'Camiseta': {
         url: 'Camiseta.png', 
         cores: [
@@ -71,7 +77,7 @@ Object.keys(produtos).forEach((name, i) => {
 });
 
 input.addEventListener('input', () => {
-    const zip = new JSZip(); // Instância para o arquivo ZIP
+    const zip = new JSZip();
     var imgPr = new Image();
     imgPr.onload = () => {
         var canvasPr = document.createElement('canvas');
@@ -90,7 +96,7 @@ input.addEventListener('input', () => {
                 stampCanvas.height = estampa.height;
 
                 if (checkBox.checked) {
-                    selected.cores.forEach(selectedColor=> {
+                    selected.cores.forEach((selectedColor, index) => {
                         ctxPr.save();
                         ctxPr.clearRect(0, 0, canvasPr.width, canvasPr.height);
                         ctxPr.fillStyle = selectedColor.cor;
@@ -105,13 +111,16 @@ input.addEventListener('input', () => {
                         ctxPr.globalCompositeOperation = 'multiply';
                         ctxPr.drawImage(imgPr, 0, 0, canvasPr.width, canvasPr.height);
                         ctxPr.restore();
-
+                        
                         const dataUrl = canvasPr.toDataURL();
                         zip.file(`${selectedColor.nome}.png`, dataUrl.split(',')[1], { base64: true });
                     });
 
                 } else {
-                    stampColors.forEach(colorGroup => {
+                    stampColors.forEach((colorGroup, index) => {
+                        // if (selected.name == 'Principal' && !index == 0) {
+                        //     return;
+                        // };
                         const folder = zip.folder(`${colorGroup.id}`);
     
                         stampCtx.globalCompositeOperation = 'source-over';
