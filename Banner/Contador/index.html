@@ -55,7 +55,9 @@
             margin: 0 auto;
             width: 20px;
             overflow: visible;
-            position: relative;
+            position: fixed;
+            z-index: -4;
+            top: -80px;
         }
     </style>
 </head>
@@ -212,7 +214,7 @@
 
 
         var container = document.getElementById('animate');
-        var emoji = ['💖', "💌"]; 
+        var emoji = ['💖', "💌", "😍"]; 
         var circles = [];
 
         for (var i = 0; i < 15; i++) {
