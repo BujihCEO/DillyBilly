@@ -1,0 +1,33 @@
+body { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+div {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+button.selected {
+    border: 2px solid red;
+}
+
+input {
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+button, input {
+    cursor: pointer;
+}

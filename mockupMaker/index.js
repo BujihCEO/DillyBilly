@@ -105,7 +105,7 @@ input.addEventListener('input', () => {
                         ctxPr.globalCompositeOperation = 'destination-in';
                         ctxPr.drawImage(imgPr, 0, 0, canvasPr.width, canvasPr.height);
                         ctxPr.globalCompositeOperation = 'destination-over';
-                        ctxPr.fillStyle = '#fffff0';
+                        ctxPr.fillStyle = '#ffffff';
                         ctxPr.fillRect(0, 0, canvasPr.width, canvasPr.height);
                         ctxPr.filter = 'drop-shadow(0px 0px 10px rgb(0 0 0 / 50%))';
                         ctxPr.globalCompositeOperation = 'multiply';
@@ -139,7 +139,7 @@ input.addEventListener('input', () => {
                             ctxPr.globalCompositeOperation = 'destination-in';
                             ctxPr.drawImage(imgPr, 0, 0, canvasPr.width, canvasPr.height);
                             ctxPr.globalCompositeOperation = 'destination-over';
-                            ctxPr.fillStyle = '#fffff0';
+                            ctxPr.fillStyle = '#ffffff';
                             ctxPr.fillRect(0, 0, canvasPr.width, canvasPr.height);
                             ctxPr.filter = 'drop-shadow(0px 0px 10px rgb(0 0 0 / 50%))';
                             ctxPr.globalCompositeOperation = 'multiply';
