@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
     <title>Tempo de Relacionamento</title>
     <style>
         body { 
@@ -11,6 +12,7 @@
             margin-top: 50px;
             background: black;
             color: white;
+            font-family: 'Rubik', sans-serif;
         }
         #contador { font-size: 24px; font-weight: bold; margin-top: 20px; }
         .container { width: 80%; margin: 20px auto; text-align: left; }
@@ -25,8 +27,8 @@
             list-style: none;
             padding: 0;
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-around;
+            overflow: auto;
         }
         .checklist li {
             display: flex;
@@ -34,8 +36,9 @@
             font-size: 14px; 
             margin: 5px;
             border: 2px solid;
-            border-radius: 99px;
-            padding: 10px;
+            border-radius: 10px;
+            padding: 5px 10px;
+            white-space: nowrap;
         }
         .checklist li::after {
             content: "🕑";
@@ -86,7 +89,7 @@
     </div>
 
     <div class="container border">
-        <h3>Metas de Relacionamento</h3>
+        <h3>Metas conquistadas</h3>
         <ul id="checklist" class="checklist"></ul>
     </div>
 
@@ -271,13 +274,13 @@
         }
 
         function animate() {
-        for (var i in circles) {
-            circles[i].update();
-        }
-        requestAnimationFrame(animate);
+            for (var i in circles) {
+                circles[i].update();
+            }
+            requestAnimationFrame(animate);
         }
 
-        animate();
+        // animate();
     </script>
 </body>
 </html>
