@@ -1,16 +1,25 @@
 const reviewsContainer = document.querySelector('.reviews-container');
 
-
 const reviews = [
     {
-        name: 'carla mirian', 
-        title: 'Amei a minha camiseta.', 
+        name: 'Carla Mirian', 
+        title: 'Amei a minha camiseta',
         text: 'Ela é bem confortavel e a estampa é muito lindaaa.'
     },
     {
-        name: 'carla mirian', 
-        title: 'Amei a minha camiseta.', 
-        text: 'Ela é bem confortavel e a estampa é muito lindaaa.'
+        name: 'Vanessa S.', 
+        title: 'Muito Satisfeita',
+        text: 'Achei muito bom o material e atrasou apenas 2 dias.'
+    },
+    {
+        name: 'Leticia Lima', 
+        title: 'Gosteio Muito',
+        text: 'Sou apaixonada nas estampas de vocês 😍.'
+    },
+    {
+        name: 'Kaio Souza', 
+        title: 'Satisfeito',
+        text: 'Camiseta muito boa, chegou antes do prazo.'
     },
 ]
 
@@ -25,8 +34,6 @@ function fiveStars(div) {
 
 function createReviews() {
     reviews.forEach(review => {
-        var box = document.createElement('div');
-
         var boxReview = document.createElement('div');
         boxReview.className = 'box-review';
 
@@ -62,8 +69,7 @@ function createReviews() {
         boxText.textContent = review.text;
 
         boxReview.append(boxName, boxStars, boxTitle, boxText);
-        box.append(boxReview);
-        reviewsContainer.append(box);
+        reviewsContainer.append(boxReview);
     });
 }
 

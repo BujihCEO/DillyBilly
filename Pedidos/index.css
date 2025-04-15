@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
 .reviews-title {
     text-align: center;
     font-size: 2rem;
@@ -9,30 +11,21 @@
     display: flex;
     overflow: auto;
     width: 100%;
-}
-
-.reviews-container > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    max-width: 700px;
-    flex-shrink: 0;
+    gap: 15px;
 }
 
 .box-review {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 100%;
-    max-width: 310px;
-    margin: 10px;
+    width: calc(100% - 35px);
+    max-width: 20rem;
     padding: 15px;
     border: 2px solid;
     border-radius: 30px;
     box-sizing: border-box;
     background: #fffff0;
+    flex-shrink: 0;
 }
 
 .box-review .name {

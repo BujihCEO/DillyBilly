@@ -1,21 +1,13 @@
-// const canvaBox = document.createElement();
-
-// // var stage = new Konva.Stage({
-// //     container: canvaBox,
-// //     width: Math.min(769, Math.max(window.innerWidth)),
-// //     height: window.innerHeight - 52,
-// //     draggable: true,
-// // });
-
 const produtos = {
     'Principal': {
-        url: 'Camiseta-Dobrada.png', 
+        url: 'Camiseta-Dobrada.png',
         cores: [
             {nome: 'Branco', cor: '#fff'},
         ],
     },
     'Camiseta': {
-        url: 'Camiseta.png', 
+        url: 'Camiseta.png',
+        etiqueta: 'Camiseta.png',
         cores: [
             {nome: 'Branco', cor: '#fff'},
             {nome: 'Preto', cor: '#343434'},
@@ -24,9 +16,20 @@ const produtos = {
     },
     'Baby-Look': {
         url: 'Baby-Look.png',
+        etiqueta: 'Baby-Look.png',
         cores: [
             {nome: 'Branco', cor: '#fff'},
-            {nome: 'Preto', cor: '#343434'},
+            {nome: 'Preto', cor: '#2c2c2c'},
+            {nome: 'Rosa', cor: '#EBC7D3'},
+        ],
+    },
+    'Cropped': {
+        url: 'Cropped.png',
+        etiqueta: 'Cropped.png',
+        cores: [
+            {nome: 'Branco', cor: '#fff'},
+            // {nome: 'Cinza', cor: '#808080'},
+            {nome: 'Preto', cor: '#252525'},
         ],
     },
 };
@@ -79,6 +82,8 @@ Object.keys(produtos).forEach((name, i) => {
 input.addEventListener('input', () => {
     const zip = new JSZip();
     var imgPr = new Image();
+    var etiqueta = new Image();
+    if (selected.etiqueta) { etiqueta.src = `etiqueta/${selected.etiqueta}`; }
     imgPr.onload = () => {
         var canvasPr = document.createElement('canvas');
         var ctxPr = canvasPr.getContext('2d');
@@ -96,12 +101,13 @@ input.addEventListener('input', () => {
                 stampCanvas.height = estampa.height;
 
                 if (checkBox.checked) {
-                    selected.cores.forEach((selectedColor, index) => {
+                    selected.cores.forEach(selectedColor => {
                         ctxPr.save();
                         ctxPr.clearRect(0, 0, canvasPr.width, canvasPr.height);
                         ctxPr.fillStyle = selectedColor.cor;
                         ctxPr.fillRect(0, 0, canvasPr.width, canvasPr.height);
                         ctxPr.drawImage(estampa, 0, 0, canvasPr.width, canvasPr.height);
+                        ctxPr.drawImage(etiqueta, 0, 0, canvasPr.width, canvasPr.height);
                         ctxPr.globalCompositeOperation = 'destination-in';
                         ctxPr.drawImage(imgPr, 0, 0, canvasPr.width, canvasPr.height);
                         ctxPr.globalCompositeOperation = 'destination-over';
@@ -117,10 +123,7 @@ input.addEventListener('input', () => {
                     });
 
                 } else {
-                    stampColors.forEach((colorGroup, index) => {
-                        // if (selected.name == 'Principal' && !index == 0) {
-                        //     return;
-                        // };
+                    stampColors.forEach(colorGroup => {
                         const folder = zip.folder(`${colorGroup.id}`);
     
                         stampCtx.globalCompositeOperation = 'source-over';
@@ -136,6 +139,7 @@ input.addEventListener('input', () => {
                             ctxPr.fillStyle = selectedColor.cor;
                             ctxPr.fillRect(0, 0, canvasPr.width, canvasPr.height);
                             ctxPr.drawImage(stampCanvas, 0, 0, canvasPr.width, canvasPr.height);
+                            // ctxPr.drawImage(etiqueta, 0, 0, canvasPr.width, canvasPr.height);
                             ctxPr.globalCompositeOperation = 'destination-in';
                             ctxPr.drawImage(imgPr, 0, 0, canvasPr.width, canvasPr.height);
                             ctxPr.globalCompositeOperation = 'destination-over';
@@ -163,5 +167,5 @@ input.addEventListener('input', () => {
         };
         reader.readAsDataURL(input.files[0]);
     };
-    imgPr.src = selected.url;
+    imgPr.src = `produtos/${selected.url}`;
 });
