@@ -7,157 +7,62 @@
 </head>
 <style>
     @font-face {
-        font-family: 'LazyDog';
-        src: url('https://cdn.shopify.com/s/files/1/0642/0781/4744/files/Lazydog.otf?v=1742234620') format('truetype');
+        font-family: 'harrison';
+        src: url('https://cdn.shopify.com/s/files/1/0642/0781/4744/files/harrison-rough.otf?v=1746643279') format('truetype');
     }
-    .banner-desconto {
+    .banner-box {
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 700px;
-        aspect-ratio: 5 / 2.5;
-        margin: 0 auto;
-        border: 3px solid #707aff;
-        border-radius: 20px;
-        background: #fffff0;
-        overflow: hidden;
-        box-sizing: border-box;
-    }
-    .banner-desconto > * { 
-        position: absolute;
-    }
-    .svg-desconto {
-        background: url(https://cdn.shopify.com/s/files/1/0642/0781/4744/files/desconto.svg?v=1741971137) center / contain;
-        aspect-ratio: 106/107;
-    }
-    .svg-desconto:nth-child(1) {
-        height: 57%;
-        left: -6%;
-        top: -38%;
-        rotate: -50deg;
-    }
-    .svg-desconto:nth-child(2) {
-        height: 47%;
-        left: 33%;
-        top: -23%;
-        rotate: 7deg;
-    }
-    .svg-desconto:nth-child(3) {
-        height: 55%;
-        left: 56%;
-        top: -37%;
-        rotate: -50deg;
-    }
-    .svg-desconto:nth-child(4) {
-        height: 55%;
-        left: 83%;
-        top: -28%;
-        rotate: 7deg;
-    }
-    .svg-desconto:nth-child(5) {
-        height: 55%;
-        left: -13%;
-        top: 34%;
-        rotate: 7deg;
-    }
-    .svg-desconto:nth-child(6) {
-        height: 45%;
-        left: 9%;
-        top: 82%;
-        rotate: 41deg;
-    }
-    .svg-desconto:nth-child(7) {
-        height: 52%;
-        left: 39%;
-        top: 68%;
-        rotate: 95deg;
-    }
-    .svg-desconto:nth-child(8) {
-        height: 48%;
-        left: 82%;
-        top: 69%;
-        rotate: 7deg;
-    }
-    .product-box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        left: 0;
-        height: 100%;
-        width: 50%;
-    }
-    .product-exemple {
-        position: absolute;
-        background: url(https://cdn.shopify.com/s/files/1/0642/0781/4744/files/pr-exemple.png?v=1741970972) center / contain;
-        height: 80%;
-        aspect-ratio: 1/1;
-        filter: drop-shadow(0px 0px 5px white);
-    }
-    .product-exemple:nth-child(1) {
-        transform: translate(-7%, -7%);
-    }
-    .product-exemple:nth-child(2) {
-        transform: translate(7%, 7%);
-    }
-    .text-box {
         display: grid;
-        justify-items: center;
-        width: 50%;
-        left: 50%;
-        font-family: 'LazyDog';
-        font-size: calc(100vw * 0.1);
+        font-family: 'harrison';
         text-transform: uppercase;
-        color: #707AFF;
-        animation: textBoxAnime 1s infinite;
+        width: 500px;
+        height: 500px;
+        margin: 0 10px;
+        background: ivory;
     }
-    @media (min-width: 700px) {
-        .text-box {
-            font-size: calc(700px * 0.1);
-        }
+    .banner-box > * {
+        position: absolute;
     }
-    .text-box > span:nth-child(1) {
-        font-size: 62%;
+    .banner-box > .title {
+        display: flex;
+        font-size: 60px;
     }
-    .text-box > span:nth-child(2) {
-        font-size: 90%;
+    .banner-box .offers {
+        display: flex;
     }
-    .text-box > span:nth-child(3) {
-        font-size: 60%;
-        translate: 0 -14%;
+    .banner-box .offers .box {
+
     }
-    @keyframes textBoxAnime {
-        0% {
-            scale: 1;
-        }
-        50% {
-            scale: 1.1;
-        }
-        100% {
-            scale: 1;
-        }
-    }
-</style>
+  </style>
 <body>
-    <div class="banner-desconto">
-        <div class="svg-desconto"></div>
-        <div class="svg-desconto"></div>
-        <div class="svg-desconto"></div>
-        <div class="svg-desconto"></div>
-        <div class="svg-desconto"></div>
-        <div class="svg-desconto"></div>
-        <div class="svg-desconto"></div>
-        <div class="svg-desconto"></div>
-        <div class="product-box">
-            <div class="product-exemple"></div>
-            <div class="product-exemple"></div>
+    <div class="banner-box">
+        <div class="title">
+            <div>super promo</div>
+            <div>+</div>
+            <div>Frete grátis</div>
+            <div>*</div>
         </div>
-        <div class="text-box">
-            <span>2 peças por</span>
-            <span>R$ 59,90</span>
-            <span>cada</span>
+        <div class="offers">
+            <div class="box">
+                <div class="">1 por</div>
+                <div class="old-price">R$ 79,90</div>
+                <div class="new-price">
+                    <div>R$</div>
+                    <div>59</div>
+                    <div>,90</div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="">1 por</div>
+                <div class="old-price">R$ 79,90</div>
+                <div class="new-price">
+                    <div>R$</div>
+                    <div>59</div>
+                    <div>,90</div>
+                </div>
+            </div>
         </div>
+        <div class="arte"></div>
     </div>
 </body>
 </html>

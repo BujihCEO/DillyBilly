@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
-
 .reviews-title {
     text-align: center;
     font-size: 2rem;
@@ -11,67 +9,42 @@
     display: flex;
     overflow: auto;
     width: 100%;
-    gap: 15px;
 }
 
 .box-review {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+    flex-shrink: 0;
     width: calc(100% - 35px);
     max-width: 20rem;
     padding: 15px;
-    border: 2px solid;
     border-radius: 30px;
     box-sizing: border-box;
-    background: #fffff0;
-    flex-shrink: 0;
+    font-size: 15px;
+    margin: 8px;
+    box-shadow: 0 0 6px rgb(0, 0, 0, 40%);
 }
 
-.box-review .name {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    height: 45px;
-    font-family: 'Rubik Mono One';
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
+.box-review > img {
+    height: 80px;
+    border-radius: 50%;
 }
 
-.box-review .name > div:nth-child(1) {
-    height: 100%;
-    aspect-ratio: 1;
+.box-review > div:nth-child(2) {
+    display: grid;
+    gap: 8px;
+    padding: 10px 0;
 }
 
 .boxStars {
     display: flex;
-    height: 1.5rem;
-    gap: 5px;
-}
-
-.boxStars > * {
-    display: flex;
-    text-align: center;
-    align-items: center;
-}
-
-.verifyBox {
-    font-weight: bold;
-    font-size: 0.8rem;
-    gap: 5px;
+    height: 16px;
 }
 
 .boxStars svg {
     height: 100%;
-    width: auto;
 }
 
-.box-review .title {
-    margin: 10px 0;
-    font-weight: bold;
-}
-
-.box-review .text {
-
+.userName {
+    font-weight: 600;
 }
